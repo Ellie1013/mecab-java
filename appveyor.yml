@@ -4,21 +4,13 @@ platform:
 
 environment:
   matrix:
-    - JDK: C:\Program Files (x86)\Java\jdk1.8.0
-      JDKNAME: jdk1.8.0
-      ARCH: x86
     - JDK: C:\Program Files\Java\jdk1.8.0
       JDKNAME: jdk1.8.0
       ARCH: x64
-    - JDK: C:\Program Files\Java\jdk9
-      JDKNAME: jdk9
-      ARCH: x64
-    - JDK: C:\Program Files\Java\jdk10
-      JDKNAME: jdk10
-      ARCH: x64
+
 
 before_build:
-    - appveyor DownloadFile https://github.com/Ellie1013/mecab/releases/download/ellie-mecab-v1.0/mecab-ko-msvc-%ARCH%.zip
+    - appveyor DownloadFile https://github.com/Ellie1013/mecab/releases/download/ellie-mecab-v1.0/mecab-ko-msvc-x64.zip
     - 7z x mecab-ko-msvc-%ARCH%.zip -oj:\dev\dialog\mecab
     
 build_script:
