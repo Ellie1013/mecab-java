@@ -10,7 +10,7 @@ environment:
 
 
 before_build:
-    - appveyor DownloadFile https://github.com/Ellie1013/mecab/releases/download/ellie-mecab-v1.0/mecab-ko-msvc-x64.zip
+    - appveyor DownloadFile https://github.com/Pusnow/mecab-ko-msvc/releases/download/release-0.9.2-msvc-3/mecab-ko-msvc-%ARCH%.zip
     - 7z x mecab-ko-msvc-%ARCH%.zip -oj:\dev\dialog\mecab
     
 build_script:
