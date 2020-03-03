@@ -10,13 +10,13 @@ environment:
 
 
 before_build:
-    - appveyor DownloadFile https://github.com/Pusnow/mecab-ko-msvc/releases/download/release-0.9.2-msvc-3/mecab-ko-msvc-%ARCH%.zip
-    - 7z x mecab-ko-msvc-%ARCH%.zip -oj:\dev\dialog\mecab
+    - appveyor DownloadFile https://github.com/Ellie1013/test-ellie/releases/download/ellie-mecab-java-v1.0/mecab-ko-msvc-%ARCH%.zip
+    - 7z x mecab-ko-msvc-%ARCH%.zip -oc:\projects\mecab-java
     
 build_script:
     - call "C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\vcvarsall.bat" %ARCH%
-    - cl.exe /EHsc /O2 /GL /GA /Ob2 /nologo /W3 /MT /Zi /wd4800 /wd4305 /wd4244 -I"%JDK%\include" -I"%JDK%\include\win32" -I"J:\dev\dialog\mecab" -c MeCab_wrap.cxx 
-    - link.exe /nologo /OPT:REF /OPT:ICF /LTCG /NXCOMPAT /DYNAMICBASE /MACHINE:%ARCH% -out:MeCab.dll J:\dev\dialog\mecab\libmecab.lib MeCab_wrap.obj /dll
+    - cl.exe /EHsc /O2 /GL /GA /Ob2 /nologo /W3 /MT /Zi /wd4800 /wd4305 /wd4244 -I"%JDK%\include" -I"%JDK%\include\win32" -I"C:\projects\mecab-java" -c MeCab_wrap.cxx 
+    - link.exe /nologo /OPT:REF /OPT:ICF /LTCG /NXCOMPAT /DYNAMICBASE /MACHINE:%ARCH% -out:MeCab.dll C:\projects\mecab-java\libmecab.lib MeCab_wrap.obj /dll
 
 after_build:
     - 7z a mecab-java-msvc-%JDKNAME%-%ARCH%.zip %APPVEYOR_BUILD_FOLDER%\MeCab.dll
