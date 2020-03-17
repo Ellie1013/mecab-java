@@ -10,7 +10,7 @@ environment:
 
 
 before_build:
-    - appveyor DownloadFile https://github.com/Ellie1013/test-ellie/releases/download/ellie-mecab-java-v1.0/mecab-ko-msvc-%ARCH%.zip
+    - appveyor DownloadFile https://github.com/Ellie1013/test-ellie/releases/download/ellie-mecab-java-v1.0/mecab-ko-msvc-x64.zip
     - 7z x mecab-ko-msvc-%ARCH%.zip -oc:\projects\mecab-java
     
 build_script:
